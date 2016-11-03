@@ -29,3 +29,11 @@ QUnit.test( "setting details", function( assert ) {
     assert.equal(this.ul.find('li').length,2,"2 li found");
 
 });
+
+QUnit.test("pending",function(assert){
+    var orgDetails = new OrgDetails(this.ul);
+    orgDetails.pending();
+
+    assert.equal(this.ul.find('li').length,1,"1 li found");
+    assert.ok($(this.ul.find('li')[0]).text().indexOf("Searching") !== -1,"should be searching");
+});

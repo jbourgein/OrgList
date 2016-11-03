@@ -23,7 +23,7 @@ QUnit.test( "setting results", function( assert ) {
     var orgResults = new OrgResults(this.ul);
     orgResults.setResults(this.dummyData);
     
-    assert.equal($(this.ul.find('li')[0]).text(),"foo","should be foo");
+    assert.ok($(this.ul.find('li')[0]).text().indexOf("foo") !== -1,"should be foo");
     assert.equal($(this.ul.find('li')[1]).attr("data-id"),"987654321","should be 987654321");
     assert.equal(this.ul.find('li').length,2,"2 li found");
 
@@ -42,3 +42,11 @@ QUnit.test("checking click",function(assert){
     var firstListElement = $(this.ul.find('li')[0]);
     firstListElement.trigger("click");
 })
+
+QUnit.test("pending",function(assert){
+    var orgResults = new OrgResults(this.ul);
+    orgResults.pending();
+
+    assert.equal(this.ul.find('li').length,1,"1 li found");
+    assert.ok($(this.ul.find('li')[0]).text().indexOf("Searching") !== -1,"should be searching");
+});

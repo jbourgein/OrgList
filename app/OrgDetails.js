@@ -16,6 +16,9 @@ OrgDetails.prototype = {
 			html += "<li>" + res.Name + " - " + res.Login_Link__c + "</li>";
 		});
 
-		this._el.append(html);
+		this._el.html(html);
+	},
+	pending : function(){		
+    	this._el.html( '<li class="searching">Searching</li>' );
 	}
 }

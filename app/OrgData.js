@@ -17,7 +17,7 @@ OrgData.prototype = {
 		return dfd.promise();
 	},
 	fetchOrgs : function(){
-		var query = 'SELECT id, Name from Org__c ORDER BY Name ASC';
+		var query = 'SELECT id, Name, Login_Link__c from Org__c ORDER BY Name ASC';
 		return this.query(query);
 	},
 	fetchSandboxesForOrgId : function(orgId){

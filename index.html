@@ -1,7 +1,5 @@
 <html>
-    <head>
-
-        <!-- <script data-main="app" src="lib/require.js"></script> -->
+    <head>        
         <script src="lib/jquery-3.1.1.js"></script>
         <script src="lib/force.js"></script>
         <script src="app/OrgDetails.js"></script>
@@ -9,11 +7,15 @@
         <script src="app/OrgData.js"></script>
     </head>
     <body style="height:100%">
-        <div style="float:left;height:100%;overflow-y: scroll;cursor: pointer;">
+
+        <div style="float:left;height:100%;overflow-y: scroll;cursor: pointer;">        
+            <h2>Orgs</h2>
+            <input type="text" id="searchBox">
             <ul id="orgList" style="list-style: none"></ul>        
         </div>
         
         <div style="float:left">
+            <h2>Sandboxes</h2>
             <ul id="orgDetails"></ul>
         </div>
         <script src="app/main.js"></script>
