@@ -50,3 +50,12 @@ QUnit.test("pending",function(assert){
     assert.equal(this.ul.find('li').length,1,"1 li found");
     assert.ok($(this.ul.find('li')[0]).text().indexOf("Searching") !== -1,"should be searching");
 });
+
+QUnit.test("filtering",function(assert){
+    var orgResults = new OrgResults(this.ul);
+    orgResults.setResults(this.dummyData);
+
+    orgResults.filter("foo");
+    //assert.ok($(this.ul.find('li'))
+
+});

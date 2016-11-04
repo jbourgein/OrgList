@@ -1,0 +1,70 @@
+<html>
+    <head>        
+        <script src="lib/jquery-3.1.1.js"></script>
+        <script src="lib/force.js"></script>        
+    </head>
+    <body style="height:100%">
+
+        <div style="float:left;height:100%;overflow-y: scroll;cursor: pointer;">        
+            <h2>Orgs</h2>
+            <input type="text" id="searchBox">
+            <ul id="orgList" style="list-style: none"></ul>        
+        </div>
+        
+        <div style="float:left">
+            <h2>Sandboxes</h2>
+            <ul id="orgDetails"></ul>
+        </div>        
+    </body>
+    <script>
+         $(document).ready(function(){
+            var orgsQuery = 'SELECT id, Name, Login_Link__c from Org__c ORDER BY Name ASC';
+            
+            force.login(function() {
+                force.query(orgsQuery,function(res){
+                    var html = "";
+                    $.each(res.records,function(ind,res){
+                        html += "<li data-id='" + res.Id + "'>"+res.Name+" - " + res.Login_Link__c + "</li>";
+                    })
+                    $('#orgList').html(html);
+                });
+            });                
+
+            $('#orgList').on("click",function(evt){
+                var id = $(evt.target).attr('data-id');
+                $(evt.target).parent().find("li,a").css("background","none");
+                $(evt.target).css("background","red");
+
+                var sandboxQuery = "SELECT id, Name, Login_Link__c from Sandbox__c WHERE Org__c = '" + id + "'";
+                force.query(sandboxQuery,function(res){
+                    var html = "";
+                    $('#orgDetails').html(html);
+                    if(res.records.length === 0){
+                        html = "<p>no results</p>"; 
+                    }
+                    else{
+                        $.each(res.records,function(ind,res){
+                        html += "<li>" + res.Name + " - " + res.Login_Link__c + "</li>";
+                        });
+
+                        $('#orgDetails').html(html);
+                    }                    
+                });
+            })
+
+            $('#searchBox').keyup(function(){
+                var searchTerm = $('#searchBox').val();
+                $('#orgList').find("li").css("display","list-item");
+                if(searchTerm.length < 3){      
+                    return;
+                }
+                else{
+                    searchTerm = searchTerm.toUpperCase();
+                    $('#orgList').find("li").filter(function(index){
+                        return $(this).text().toUpperCase().indexOf(searchTerm) === -1;
+                    }).css("display","none")
+                }
+            })
+         })
+    </script>
+</html>
