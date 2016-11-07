@@ -10,7 +10,17 @@ QUnit.module('OrgResults tests',{
                 Name: "bar",
                 Id:"987654321"
             }
-        ]        
+        ];       
+
+        //need to add to actual dom to check for visibility of child elements
+        $('body').append(this.ul);      
+    },
+    afterEach: function(){
+        //remove the list from the dom
+        var appendedEl = $('#orgList');
+        if(appendedEl.length > 0){
+            appendedEl.remove();
+        }
     }
 });
 
@@ -53,9 +63,10 @@ QUnit.test("pending",function(assert){
 
 QUnit.test("filtering",function(assert){
     var orgResults = new OrgResults(this.ul);
-    orgResults.setResults(this.dummyData);
+    orgResults.setResults(this.dummyData);    
 
-    orgResults.filter("foo");
-    //assert.ok($(this.ul.find('li'))
+    orgResults.filter("bar");
+    assert.equal($(this.ul).find('li:hidden').length,1,"should be 1");
+    assert.equal($(this.ul).find('li:visible').length,1,"should be 1");
 
 });

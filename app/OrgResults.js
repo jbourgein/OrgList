@@ -25,14 +25,15 @@ OrgResults.prototype = {
     	this._el.html( '<li class="searching">Searching</li>' );
 	},
 	filter : function(searchTerm){
-		this._el.find("li").css("display","list-item");
+		this._el.find("li").show();
 		if(searchTerm.length < 3){		
 			return;
 		}
 		else{
+			searchTerm = searchTerm.toUpperCase();
 			this._el.find("li").filter(function(index){
 			    return $(this).text().toUpperCase().indexOf(searchTerm) === -1;
-			}).css("display","none")
+			}).hide();
 		}
 	}	
 }
