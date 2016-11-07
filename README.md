@@ -16,5 +16,6 @@ The test app uses [forcejs](https://github.com/ccoenraets/forcejs) for all the S
 
 ### Useful Guides
 * [http://alistapart.com/article/writing-testable-javascript](http://alistapart.com/article/writing-testable-javascript)
+* [http://www.slideshare.net/keirb/javascript-unit-testing-48434587](http://www.slideshare.net/keirb/javascript-unit-testing-48434587) - salesforce focused
 * [http://www.adequatelygood.com/Writing-Testable-JavaScript.html](http://www.adequatelygood.com/Writing-Testable-JavaScript.html)
 * [https://gist.github.com/jbranchaud/60146038904b78f22126](https://gist.github.com/jbranchaud/60146038904b78f22126) - useful list of resources
