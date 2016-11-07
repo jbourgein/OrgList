@@ -2,7 +2,7 @@
 This shows an example of how to test a simlpe program for fetching orgs and displaying their sandboxes with login details.
 
 ## Example pages
-The [index.html](/index.html) is the example of well structured JS code that is easier to test. The [indexBad.html](/indexBad.html) is an example of difficult to test JS code. All the testing stuff is in the /tests/ directory.
+The [index.html](/index.html) is the example of well structured JS code that is easier to test. The [indexBad.html](/indexBad.html) is an example of difficult to test JS code. All the testing stuff is in the [/tests](/tests/) directory.
 
 ## forcejs
 The test app uses [forcejs](https://github.com/ccoenraets/forcejs) for all the Salesforce API calls. If you run it locally I recommend using [force-server](https://github.com/ccoenraets/force-server) (as opposed to IIS) as it proxies all API calls so you can get round cross-origin issues.
